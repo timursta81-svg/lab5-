@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Калькулятор</title>
+</head>
+<body>
+
+<h2>Калькулятор</h2>
+
+<input id="a" type="number" placeholder="Число 1">
+<input id="b" type="number" placeholder="Число 2">
+
+<br><br>
+
+<button id="plus">+</button>
+<button id="minus">-</button>
+<button id="multiply">*</button>
+<button id="divide">/</button>
+
+<p id="result">Результат:</p>
+
+<script>
+
+let a = document.getElementById("a");
+let b = document.getElementById("b");
+let result = document.getElementById("result");
+
+function calc(operation) {
+
+    let x = Number(a.value);
+    let y = Number(b.value);
+    let answer;
+
+    if (operation == "+") {
+        answer = x + y;
+    }
+    else if (operation == "-") {
+        answer = x - y;
+    }
+    else if (operation == "*") {
+        answer = x * y;
+    }
+    else {
+        if (y == 0) {
+            result.textContent = "На ноль делить нельзя";
+            return;
+        }
+
+        answer = x / y;
+    }
+
+    result.textContent = "Результат: " + answer;
+}
+
+document.getElementById("plus").addEventListener("click", function() {
+    calc("+");
+});
+
+document.getElementById("minus").addEventListener("click", function() {
+    calc("-");
+});
+
+document.getElementById("multiply").addEventListener("click", function() {
+    calc("*");
+});
+
+document.getElementById("divide").addEventListener("click", function() {
+    calc("/");
+});
+
+a.addEventListener("input", function() {
+    result.textContent = "Результат:";
+});
+
+for (let i = 0; i < 3; i++) {
+    console.log(i);
+}
+
+</script>
+
+</body>
+</html>
