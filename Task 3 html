@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Расходы</title>
+</head>
+<body>
+
+<h2>Мои расходы</h2>
+
+<input id="name" placeholder="Название">
+<input id="sum" type="number" placeholder="Сумма">
+<button onclick="add()">Добавить</button>
+
+<ul id="list"></ul>
+
+<h3>Общая сумма: <span id="total">0</span></h3>
+
+<script>
+let total = 0;
+
+function add() {
+    let name = document.getElementById("name").value;
+    let sum = Number(document.getElementById("sum").value);
+
+    if (name == "" || sum <= 0) return;
+
+    let li = document.createElement("li");
+
+    li.textContent = name + " — " + sum + " тг ";
+
+    let button = document.createElement("button");
+    button.textContent = "Удалить";
+
+    button.onclick = function() {
+        total -= sum;
+        document.getElementById("total").textContent = total;
+        li.remove();
+    };
+
+    li.appendChild(button);
+    document.getElementById("list").appendChild(li);
+
+    total += sum;
+    document.getElementById("total").textContent = total;
+
+    document.getElementById("name").value = "";
+    document.getElementById("sum").value = "";
+}
+</script>
+
+</body>
+</html>
