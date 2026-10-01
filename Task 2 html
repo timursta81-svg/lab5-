@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Угадай число</title>
+</head>
+<body>
+
+<h2>Угадай число от 1 до 100</h2>
+
+<input id="num" type="number">
+<button onclick="check()">Угадать</button>
+
+<p id="result"></p>
+
+<script>
+let secret = Math.floor(Math.random() * 100) + 1;
+
+function check() {
+    let num = Number(document.getElementById("num").value);
+
+    if (num < secret) {
+        document.getElementById("result").textContent = "Больше";
+    } else if (num > secret) {
+        document.getElementById("result").textContent = "Меньше";
+    } else {
+        document.getElementById("result").textContent = "Угадал!";
+    }
+}
+</script>
+
+</body>
+</html>
